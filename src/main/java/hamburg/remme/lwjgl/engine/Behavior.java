@@ -7,13 +7,15 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
 
-@Getter public abstract class Behavior<T extends Application<T>> {
+@Getter
+@Setter(PACKAGE)
+public abstract class Behavior<T extends Application<T>> {
 
     @Setter(PUBLIC) private boolean enabled = true;
-    @Setter(PACKAGE) @NonNull private GameObject gameObject;
-    @Setter(PACKAGE) @NonNull private T application;
-    @Setter(PACKAGE) @NonNull private Window window;
-    @Setter(PACKAGE) @NonNull private Renderer renderer;
+    @NonNull private GameObject<T> gameObject;
+    @NonNull private T application;
+    @NonNull private Window window;
+    @NonNull private Renderer renderer;
 
     public void start() {
     }

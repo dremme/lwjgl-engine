@@ -35,7 +35,7 @@ import lombok.val;
     }
 
     @SneakyThrows private ByteBuffer readFile(String file) {
-        val uri = ShaderFactory.class.getResource(file).toURI();
+        val uri = ImageLoader.class.getResource(file).toURI();
         val bytes = readAllBytes(Paths.get(uri));
         val buffer = createByteBuffer(bytes.length);
         buffer.put(bytes);

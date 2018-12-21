@@ -1,6 +1,5 @@
 package hamburg.remme.lwjgl.engine.geometry;
 
-import static lombok.AccessLevel.PROTECTED;
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.opengl.GL15.GL_ARRAY_BUFFER;
 import static org.lwjgl.opengl.GL15.GL_ELEMENT_ARRAY_BUFFER;
@@ -8,14 +7,12 @@ import static org.lwjgl.opengl.GL20.glEnableVertexAttribArray;
 import static org.lwjgl.opengl.GL20.glVertexAttribPointer;
 import static org.lwjgl.opengl.GL30.*;
 
-import lombok.Getter;
-
 public class Mesh {
 
+    protected final int size;
     private final int pointer;
     private final Buffer vertexBuffer;
     private final Buffer indexBuffer;
-    @Getter(PROTECTED) private final int size;
 
     public static void free() {
         glBindVertexArray(0);

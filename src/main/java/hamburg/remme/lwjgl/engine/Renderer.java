@@ -26,8 +26,8 @@ public class Renderer {
     private ShaderProgram shader;
     private Texture texture;
     private Mesh mesh;
-    @Getter private final Matrix4f camera = new Matrix4f();
-    @Getter private final Vector3f clearColor = new Vector3f(0);
+    @Getter @Setter private Matrix4f camera = new Matrix4f();
+    @Getter @Setter private Vector3f clearColor = new Vector3f(0);
     @Getter @Setter private int drawMode = DRAW_TRIANGLES;
 
     Renderer() {
@@ -110,7 +110,7 @@ public class Renderer {
             if (texture == null) {
                 Texture.free(0);
             } else {
-                texture.bind(0); // TODO
+                texture.bind(0); // TODO: select proper texture unit
             }
         }
     }

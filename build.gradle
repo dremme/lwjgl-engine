@@ -1,22 +1,25 @@
 import org.gradle.internal.os.OperatingSystem
 
-project.ext.lwjglVersion = "3.1.6"
-project.ext.jomlVersion = "1.9.9"
+project.ext.lwjglVersion = '3.1.6'
+project.ext.jomlVersion = '1.9.9'
 
 switch (OperatingSystem.current()) {
   case OperatingSystem.WINDOWS:
-    project.ext.lwjglNatives = "natives-windows"
+    project.ext.lwjglNatives = 'natives-windows'
     break
   case OperatingSystem.LINUX:
-    project.ext.lwjglNatives = "natives-linux"
+    project.ext.lwjglNatives = 'natives-linux'
     break
   case OperatingSystem.MAC_OS:
-    project.ext.lwjglNatives = "natives-macos"
+    project.ext.lwjglNatives = 'natives-macos'
     break
 }
 
-apply plugin: "java"
-apply plugin: "application"
+apply plugin: 'java'
+apply plugin: 'application'
+
+group 'hamburg.remme'
+version '1.0-SNAPSHOT'
 
 repositories {
   mavenCentral()
@@ -45,12 +48,12 @@ dependencies {
   compile "org.lwjgl:lwjgl-par:$lwjglVersion:$lwjglNatives"
   compile "org.lwjgl:lwjgl-stb:$lwjglVersion:$lwjglNatives"
   compile "org.joml:joml:${jomlVersion}"
-
-  compileOnly "org.projectlombok:lombok:1.18.0"
+  compileOnly 'org.projectlombok:lombok:1.18.0'
 }
 
-mainClassName = "hamburg.remme.lwjgl.game.ParticleGame"
+mainClassName = 'hamburg.remme.lwjgl.game.ParticleGame'
+sourceCompatibility = '11'
 
 if (OperatingSystem.current() == OperatingSystem.MAC_OS) {
-  applicationDefaultJvmArgs = ["-XstartOnFirstThread"]
+  applicationDefaultJvmArgs = ['-XstartOnFirstThread']
 }

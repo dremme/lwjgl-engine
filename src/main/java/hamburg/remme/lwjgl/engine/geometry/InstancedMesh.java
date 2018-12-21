@@ -5,6 +5,7 @@ import static org.lwjgl.opengl.GL11.GL_UNSIGNED_SHORT;
 import static org.lwjgl.opengl.GL15.GL_ARRAY_BUFFER;
 import static org.lwjgl.opengl.GL20.glEnableVertexAttribArray;
 import static org.lwjgl.opengl.GL20.glVertexAttribPointer;
+import static org.lwjgl.opengl.GL31.glDrawElementsInstanced;
 import static org.lwjgl.opengl.GL33.glVertexAttribDivisor;
 
 import java.util.List;
@@ -53,9 +54,9 @@ public class InstancedMesh extends Mesh {
     }
 
     @Override public void draw(int drawMode) {
-        GL31.glDrawElementsInstanced(
+        glDrawElementsInstanced(
                 drawMode,
-                getSize(),
+                size,
                 GL_UNSIGNED_SHORT,
                 0,
                 instances);
